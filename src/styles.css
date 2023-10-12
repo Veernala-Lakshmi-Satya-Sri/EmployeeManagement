@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+.active {
+    color: blue;
+    font-weight: bold;
+}
+
+.styles {
+    margin: 10px;
+}
+
+span {
+    color: red;
+}
+
+.btn {
+    background-color: blue;
+    padding: 10px;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    
+}
+

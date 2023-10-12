@@ -1,0 +1,47 @@
+<div>
+    <h1>Employee List</h1>
+    <h3>Filter By</h3>
+    <input id="filter" [(ngModel)]="filterby" placeholder="search..." (input)="onFilterEmployees()"/>
+    <p id="count">Total Number of Employee: {{employees.length}}</p>
+    <p id="fcount">Filtered Employees {{displayed}}</p>
+    <table>
+        <thead>
+            <tr>
+              <th >Emp ID</th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let emp of employees">
+                    <tr *ngIf="filterby==='' || emp.name.toLowerCase().startsWith(filterby.toLowerCase())" >
+
+                        <td> <a routerLink="/empdetails/{{emp.id}}">{{emp.id}}</a></td>
+                        <td>{{emp.name}}</td>                       
+                        <td> {{emp.location}}</td>
+                        <td>{{emp.email}}</td>
+                        <td> {{emp.mobile}}</td>
+                        <td><button>
+                            <a routerLink="/editemployee/{{emp.id}}">Edit{{emp.id}}</a>
+                        </button> </td>
+                        <td>
+                           
+                           <button>
+                            <a routerLink ="/employees" (click)="deleteEmployee(emp.id)"> Delete{{emp.id}} </a>
+                           </button>
+                               
+                           
+                            
+                            
+                        </td>
+  
+                    </tr>
+                </ng-container>
+            
+            </tbody>
+    </table>
+</div>

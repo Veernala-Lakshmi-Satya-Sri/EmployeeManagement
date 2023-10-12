@@ -1,0 +1,49 @@
+<div>
+    <h1>Edit  Employee</h1>
+   
+
+    <form [formGroup]="reactiveForms" (ngSubmit)="onSubmit()">
+        <label [ngClass]="'styles'" for="name">Name:</label><br>
+        <input  [ngClass]="'styles'" type="text" id="name" formControlName="name">
+        <div *ngIf="submitted || reactiveForms.get('name').touched">
+            <span *ngIf="reactiveForms.get('name').errors?.['required']"> required</span>
+            <span *ngIf="reactiveForms.get('name').errors?.['minlength']"> minumum length 3</span>
+            <span *ngIf="reactiveForms.get('name').errors?.['maxlength']"> maximumlength 30</span>
+
+            <span *ngIf="reactiveForms.get('name').errors?.['pattern']"> Only Alphabets are allowed</span>
+
+        </div>
+        <br>
+        <label [ngClass]="'styles'" for="email">Email:</label><br>
+        <input  [ngClass]="'styles'" type="email" id="email" formControlName="email">
+        <div *ngIf="submitted || reactiveForms.get('email').touched">
+            <span *ngIf="reactiveForms.get('email').errors?.['required']"> required</span>
+            <span *ngIf="reactiveForms.get('email').errors?.['email']"> Invalid Email</span>
+
+        </div>
+        <br>
+        <label [ngClass]="'styles'" for="location">Location:</label><br>
+        <!-- <input  [ngClass]="'styles'" type="text" id="location" formControlName="location"> -->
+        <select [ngClass]="'styles'"  id="location" formControlName="location">
+            <option value="">Select Location</option>
+            <option value="Banglore">Banglore</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Pune">Pune</option>
+            <option value="Chennai">Chennai</option>
+        </select>
+        <div *ngIf="submitted || reactiveForms.get('location').touched">
+            <span *ngIf="reactiveForms.get('location').errors?.['required']"> required</span>
+
+        </div>
+        <br>
+        <label [ngClass]="'styles'" for="mobile">Mobile:</label><br>
+        <input  [ngClass]="'styles'" type="text" id="mobile" formControlName="mobile">
+        <div *ngIf="submitted || reactiveForms.get('mobile').touched">
+            <span *ngIf="reactiveForms.get('mobile').errors?.['required']"> required</span>
+            <span *ngIf="reactiveForms.get('mobile').errors?.['pattern']"> Mobile number should be 10 digit</span>
+
+        </div>
+        <br>
+        <button  [ngClass]="'styles'" type="submit" id="update" [disabled]="!reactiveForms.valid">Update</button>
+      </form>
+</div>
